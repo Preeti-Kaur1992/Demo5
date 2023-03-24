@@ -1,0 +1,39 @@
+apn_hrc_asr_fact_dec_01_feb_15
+apn_hrc_call_fact_dec_01_feb_15
+parent_time
+parent_unit
+parent_line
+start_time
+ani
+dialed_num
+status
+`insights-data-prod-01.back_up.apn_hrc_asr_fact_dec_01_feb_15`
+
+SELECT parse_date("%Y%m%d", cast(parent_time as string)),parent_unit,parent_line,ani,dialed_num,status FROM `insights-data-prod-01.back_up.apn_hrc_asr_fact_dec_01_feb_15` 
+LEFT JOIN
+`insights-data-prod-01.back_up.apn_hrc_call_fact_dec_01_feb_15`
+ON
+'back_up.apn_hrc_asr_fact_dec_01_feb_15'.parse_date("%Y%m%d", cast(start_time as string))='back_up.apn_hrc_call_fact_dec_01_feb_15'.parse_date("%Y%m%d", cast(start_time as string)); 
+
+
+CT
+subquery
+type casting
+
+SELECT parent_unit,parent_line FROM `insights-data-prod-01.back_up.apn_hrc_asr_fact_dec_01_feb_15` 
+inner join `insights-data-prod-01.back_up.apn_hrc_call_fact_dec_01_feb_15` 
+on 'apn_hrc_asr_fact_dec_01_feb_15'.record_type  = 'apn_hrc_call_fact_dec_01_feb_15'.record_type Limit 5;
+
+SELECT * from `ml-console-dev.firsttesting1.Customer1`
+Except Distinct 
+SELECT * from `ml-console-dev.firsttesting1.table_a`
+
+(SELECT * from `ml-console-dev.firsttesting1.table_a`
+Except Distinct 
+SELECT * from `ml-console-dev.firsttesting1.Customer1`)
+union all
+(SELECT * from `ml-console-dev.firsttesting1.Customer1`
+Except Distinct 
+SELECT * from `ml-console-dev.firsttesting1.table_a`)
+
+more-setting-sql to bigquery compatible
