@@ -1,0 +1,20 @@
+1.Notepad++
+Gcloud Setup
+Cloud Shell
+2.Compute Engine
+#.GCS
+4.Bigquery
+5Service Account
+6.Role & Permission
+7. Shell Script
+8. Python Basics
+ssh
+instances
+external ip
+Cloud Function
+
+Poler request
+
+65500
+10000
+44000
